@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.2",
+  "release_date": "2026-07-15",
+  "paper": {
+    "title": "Generalized Foundation Model for Lithium-Ion Battery State-of-Health Prediction with Distribution Metric Learning",
+    "doi": "10.1016/j.est.2026.120566"
+  },
+  "indexing": "One-based battery IDs corresponding to battery_<id> keys",
+  "split_unit": "Complete battery/cell; cycles from one battery are never divided between train and test",
+  "validation_split": null,
+  "tasks": {
+    "HNEL": {
+      "dataset_directory": "HNEL_dataset",
+      "package": "package_1",
+      "available_cell_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      "used_cell_ids": [1, 2, 3, 4, 5, 6, 7],
+      "train_labeled_cell_ids": [1, 2, 3],
+      "test_held_out_cell_ids": [4, 5, 6, 7],
+      "paper_figure_display_cell_ids": [4, 5, 6, 7],
+      "excluded_cell_ids": [8, 9, 10, 11, 12, 13, 14]
+    },
+    "TongJi_NCM": {
+      "dataset_directory": "TongJi_dataset",
+      "package": "package_2",
+      "available_cell_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+      "used_cell_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "train_labeled_cell_ids": [1, 2, 3, 6],
+      "test_held_out_cell_ids": [4, 5, 7, 8, 9],
+      "paper_figure_display_cell_ids": [4, 5, 7, 8],
+      "excluded_cell_ids": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+    },
+    "Toyota_MIT": {
+      "dataset_directory": "Toyota_MIT_dataset",
+      "package": "package_2",
+      "available_cell_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+      "used_cell_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+      "train_labeled_cell_ids": [1, 2, 3, 4],
+      "test_held_out_cell_ids": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+      "paper_figure_display_cell_ids": [5, 6, 11, 13],
+      "excluded_cell_ids": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+    }
+  },
+  "protocol_note": "Training-cell SOH labels were used for supervised target regression. Test-cell SOH labels were reserved for evaluation. Input curves from both training and test target cells were used without test labels in the MMD domain-alignment term.",
+  "figure_note": "paper_figure_display_cell_ids is a best-effort retrospective reconstruction of the original battery_<id> keys shown as Battery 1-4 in figure order. The mapping was inferred from surviving historical task files, cycle counts, and plotting indices, was not preserved as a separate contemporaneous record, and may contain errors. It is only a possible display subset and does not redefine the held-out test set."
+}

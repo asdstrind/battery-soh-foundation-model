@@ -1,0 +1,15 @@
+release: v1.0.0
+visibility: private
+github:
+  repo: asdstrind/battery-soh-foundation-model
+  revision: v1.0.0
+dataset:
+  repo: coinlearner/battery-soh-benchmark
+  revision: data-v1.0.0
+  format: parquet
+model:
+  repo: coinlearner/battery-soh-foundation-model
+  revision: model-v1.0.0
+notes:
+  - Raw third-party datasets are excluded from all repositories.
+  - The dataset and model repositories must remain private.

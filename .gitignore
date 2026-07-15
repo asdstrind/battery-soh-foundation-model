@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and IDEs
+.venv/
+venv/
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Local data and generated artifacts
+original_battery_data/
+transformed_data/
+data/
+result/
+results/
+outputs/
+artifacts/
+checkpoints/
+T_*_S*_T*/
+TongJi_S10_T1/
+
+# Large binary formats belong on Hugging Face
+*.pkl
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.mat
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.token
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp

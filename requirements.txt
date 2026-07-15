@@ -1,0 +1,17 @@
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+scikit-learn
+torch
+tqdm
+openTSNE
+d2l
+mat73
+h5py
+openpyxl
+jupyterlab
+huggingface_hub
+pyarrow
+

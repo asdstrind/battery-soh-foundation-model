@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repository-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Reject oversized files and private artifacts
+        shell: bash
+        run: |
+          python scripts/check_repository.py .
+      - name: Validate Python syntax
+        run: python -m compileall -q test_version scripts
+      - name: Validate notebook JSON
+        run: python scripts/strip_notebook_outputs.py test_version --check
+
