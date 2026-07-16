@@ -57,6 +57,29 @@ The restored files contain float32 values because float32 is the canonical dtype
 
 > Pickle deserialization can execute code. Only load pickle files generated locally from a trusted, checksum-verified release.
 
+## Restore the complete historical `transformed_data`
+
+The private `data-v1.1.0` release also preserves all 74 historical pickle files byte-for-byte, including the non-downsampled variable-length curves and the auxiliary TongJi exports. Download only this exact legacy tree with:
+
+```bash
+python scripts/download_data.py \
+  --revision data-v1.1.0 \
+  --content full-legacy
+```
+
+Then restore and verify the complete directory:
+
+```bash
+python scripts/restore_full_transformed_data.py \
+  data/battery-soh-benchmark \
+  transformed_data \
+  --verify
+```
+
+This downloads 12,253,820,162 bytes (11.412 GiB). Copy mode requires enough space for both the downloaded files and the restored directory. If both locations are on the same filesystem, `--mode hardlink --verify` avoids the second physical copy; do not modify hard-linked output files because they share storage with the download.
+
+The full legacy tree is covered by `metadata/full_transformed_data_manifest.json`, which records the relative path, byte size, and SHA-256 of every file. This route restores exact historical bytes; the Parquet exporter above remains the recommended route when only canonical 256-point data are needed.
+
 ## Reproducibility status
 
 The included notebooks are a cleaned historical research snapshot. Notebook outputs were removed before publication. Some preprocessing notebooks still document original source-specific layouts; the release dataset and its manifest are the canonical input for new work.

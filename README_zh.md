@@ -45,6 +45,29 @@ python scripts/export_legacy_pickle.py \
 
 > pickle 反序列化可能执行代码，只应加载由可信、校验通过的数据版本在本地生成的文件。
 
+## 恢复完整历史 `transformed_data`
+
+私有 `data-v1.1.0` 版本还逐字节保存了全部 74 个历史 pickle，包括未降采样的变长循环曲线和辅助 TongJi 导出目录。仅下载完整旧版目录：
+
+```bash
+python scripts/download_data.py \
+  --revision data-v1.1.0 \
+  --content full-legacy
+```
+
+随后恢复并校验完整目录：
+
+```bash
+python scripts/restore_full_transformed_data.py \
+  data/battery-soh-benchmark \
+  transformed_data \
+  --verify
+```
+
+完整下载量为 12,253,820,162 字节（11.412 GiB）。普通复制模式需要同时容纳下载副本和恢复目录；如果两者位于同一文件系统，可使用 `--mode hardlink --verify` 避免第二份物理存储。硬链接输出与下载文件共享存储，因此不要直接修改其中的文件。
+
+`metadata/full_transformed_data_manifest.json` 记录了每个文件的相对路径、字节数和 SHA-256。该流程可恢复历史文件的精确字节；如果只需要规范的 256 点数据，仍建议使用上面的 Parquet 逆向转换方式。
+
 令牌只能通过本机凭据或环境变量 `HF_TOKEN` 提供，禁止写入代码、Notebook 或配置文件。
 
 ## 当前发布状态
