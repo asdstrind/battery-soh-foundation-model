@@ -5,7 +5,7 @@ github:
   revision: v1.0.0
 dataset:
   repo: coinlearner/battery-soh-benchmark
-  revision: data-v1.0.0
+  revision: data-v1.0.1
   format: parquet
 model:
   repo: coinlearner/battery-soh-foundation-model

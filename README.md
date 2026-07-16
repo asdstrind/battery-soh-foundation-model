@@ -34,11 +34,28 @@ Request or configure access to the private Hugging Face repository, then authent
 
 ```bash
 hf auth login
-python scripts/download_data.py --revision data-v1.0.0
+python scripts/download_data.py --revision data-v1.0.1
 python scripts/verify_data.py data/battery-soh-benchmark
 ```
 
 `HF_TOKEN` may be supplied as an environment variable in CI. Never commit it.
+
+## Restore the historical pickle layout
+
+The Hub uses Parquet as the canonical, safe, language-neutral release format. To run historical code that expects the old nested pickle dictionaries, export a local compatibility copy:
+
+```bash
+python scripts/export_legacy_pickle.py \
+  data/battery-soh-benchmark \
+  transformed_data \
+  --verify
+```
+
+The command verifies all input Parquet checksums, recreates the original canonical directory and filename pattern, reloads every generated pickle, and checks battery keys, cycle order, `(3, 256)` shapes, SOH lengths, and values. Existing output files are never replaced unless `--overwrite` is supplied.
+
+The restored files contain float32 values because float32 is the canonical dtype of the Parquet release. They reproduce the historical downsampled data structure and float32 numerical values, but they are not byte-identical to the original pickle files. They do not recreate variable-length intermediate files or historical `T_<target>_S10_T1` aggregation folders.
+
+> Pickle deserialization can execute code. Only load pickle files generated locally from a trusted, checksum-verified release.
 
 ## Reproducibility status
 
@@ -53,4 +70,3 @@ If this work is useful, cite the paper in `CITATION.cff` and cite every original
 This repository is private and currently distributed under an all-rights-reserved research notice. Dataset and model access do not grant rights to redistribute the original third-party datasets.
 
 Chinese documentation: [README_zh.md](README_zh.md)
-

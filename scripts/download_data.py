@@ -15,7 +15,7 @@ def main() -> None:
         "--repo-id",
         default=os.environ.get("HF_DATASET_REPO", "coinlearner/battery-soh-benchmark"),
     )
-    parser.add_argument("--revision", default="data-v1.0.0")
+    parser.add_argument("--revision", default="data-v1.0.1")
     parser.add_argument("--output", type=Path, default=Path("data/battery-soh-benchmark"))
     args = parser.parse_args()
 
@@ -32,4 +32,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
