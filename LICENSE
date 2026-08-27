@@ -1,10 +1,17 @@
 Copyright (c) 2026. All rights reserved.
 
-This private research repository and its source code may not be copied,
-redistributed, sublicensed, or made public without prior written permission
-from the copyright holder.
+The source code in this public repository is made available for academic
+inspection and research reference.
 
-Third-party datasets, publications, and other incorporated materials remain
-subject to their respective licenses and terms. Access to this repository does
-not grant permission to redistribute those materials.
+Public availability does not grant permission to copy, redistribute,
+sublicense, modify, publish derivative versions of, or commercially exploit
+the source code, in whole or in substantial part, without prior written
+permission from the copyright holder, except where otherwise required by
+applicable law.
 
+Third-party datasets, publications, figures, and other materials remain
+subject to their respective licenses, copyright terms, and attribution
+requirements. Access to this repository does not grant permission to
+redistribute those materials.
+
+No rights to private datasets or model checkpoints are granted by this notice.

@@ -13,6 +13,7 @@ venv/
 .ipynb_checkpoints/
 
 # Local data and generated artifacts
+fig_dir/
 original_battery_data/
 transformed_data/
 data/

@@ -9,11 +9,13 @@ from pathlib import Path
 BLOCKED_DIRECTORIES = {
     "original_battery_data",
     "transformed_data",
+    "data",
     "result",
     "results",
     "checkpoints",
     "artifacts",
     "outputs",
+    "fig_dir",
 }
 BLOCKED_SUFFIXES = {
     ".pkl",
@@ -25,6 +27,17 @@ BLOCKED_SUFFIXES = {
     ".gz",
     ".zip",
     ".rar",
+    ".token",
+    ".pem",
+    ".key",
+}
+BLOCKED_FILENAMES = {
+    ".env",
+    "id_rsa",
+    "id_ed25519",
+}
+ALLOWED_FILENAMES = {
+    ".env.example",
 }
 MAX_FILE_BYTES = 50 * 1024 * 1024
 
@@ -44,6 +57,10 @@ def main() -> int:
             failures.append(f"blocked directory: {relative}")
         if path.suffix.lower() in BLOCKED_SUFFIXES:
             failures.append(f"blocked file type: {relative}")
+        if path.name in BLOCKED_FILENAMES:
+            failures.append(f"blocked secret/config file: {relative}")
+        if path.name.startswith(".env.") and path.name not in ALLOWED_FILENAMES:
+            failures.append(f"blocked secret/config file: {relative}")
         if path.stat().st_size > MAX_FILE_BYTES:
             failures.append(f"file exceeds 50 MiB: {relative}")
 

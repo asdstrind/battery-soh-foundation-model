@@ -1,6 +1,6 @@
 # Battery SOH Foundation Model
 
-Research code for multi-source lithium-ion battery state-of-health prediction with distribution metric learning.
+This public GitHub repository contains academic research code for multi-source lithium-ion battery state-of-health prediction with distribution metric learning.
 
 This repository intentionally contains code and documentation only. Processed datasets and model checkpoints are versioned in separate **private Hugging Face repositories**:
 
@@ -14,7 +14,6 @@ The exact GitHub, dataset, and model revisions for a release are pinned in `meta
 - `test_version/functions/`: model, loss, loading, and training implementations.
 - `test_version/*.ipynb`: experiment and plotting notebooks.
 - `test_version/data_process/`: source-dataset preprocessing notebooks.
-- `fig_dir/`: figures retained with the research snapshot.
 - `scripts/`: dataset conversion, download, validation, and release utilities.
 - `docs/`: dataset documentation and cell-level train/test assignments.
 
@@ -44,13 +43,16 @@ python scripts/verify_data.py data/battery-soh-benchmark
 
 The included notebooks are a cleaned historical research snapshot. Notebook outputs were removed before publication. Some preprocessing notebooks still document original source-specific layouts; the release dataset and its manifest are the canonical input for new work.
 
+Raw third-party datasets are not distributed in this public GitHub repository. Their sources and attribution requirements are documented in `docs/Battery_SOH_Data_README.md`.
+
+Published-paper figures are intentionally excluded from this public repository. The paper/publisher-hosted version should be used as the authoritative source for figures.
+
 ## Citation
 
 If this work is useful, cite the paper in `CITATION.cff` and cite every original dataset used in an analysis. Full source attribution is in `docs/Battery_SOH_Data_README.md`.
 
 ## License and access
 
-This repository is private and currently distributed under an all-rights-reserved research notice. Dataset and model access do not grant rights to redistribute the original third-party datasets.
+This public repository is distributed under an all-rights-reserved academic inspection notice. The private dataset and model repositories, third-party datasets, and published materials remain subject to their respective access terms, licenses, copyright, and attribution requirements. See `LICENSE` for details.
 
 Chinese documentation: [README_zh.md](README_zh.md)
-
